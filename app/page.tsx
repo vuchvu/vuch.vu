@@ -34,19 +34,19 @@ function DisplayLinks({header, links, styles}: displayLinkProps) {
 }
 
 export default function HomePage() {
-  const sns_links: link[] = [
+  const sns_links: Link[] = [
     { label: "X (旧Twitter)", url: "https://x.com/x_vuchvu_x" },
     { label: "Misskey", url: "https://misskey.dev/@x_vuchvu_x" },
     { label: "Discord", url: "https://discord.com/users/258213639486439425" },
     { label: "Bluesky", url: "https://bsky.social/vuchvu.bsky.social" },
   ];
-  const creator_links: link[] = [
+  const creator_links: Link[] = [
     { label: "BOOTH", url: "https://vuchvu.booth.pm/" },
     { label: "Skeb", url: "https://skeb.jp/@x_vuchvu_x" },
     { label: "Pixiv", url: "https://www.pixiv.net/users/6518175" },
     { label: "SKIMA", url: "https://skima.jp/profile?id=134804" },
   ];
-  const developer_links: link[] = [
+  const developer_links: Link[] = [
     { label: "GitHub", url: "https://github.com/vuchvu" },
   ];
   const button_styles: string = "bg-sky-400 hover:bg-sky-300 text-white";

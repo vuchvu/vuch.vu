@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Link from "next/link";
 import "./globals.css";
-import type { Link } from "./lib/types"
+import Link from "next/link";
+import type { Link as NavLink } from "./lib/types";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "ヴヂュヴのホームページ",
 };
 
-const sections: Link[] = [
+const sections: NavLink[] = [
   { label: "自己紹介", url: "/" },
   { label: "リンク", url: "/links" },
 ];

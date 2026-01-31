@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
+import type { Link } from "./lib/types"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,6 +18,11 @@ export const metadata: Metadata = {
   title: "ヴヂュヴのホームページ",
 };
 
+const sections: Link[] = [
+  { label: "自己紹介", url: "/" },
+  { label: "リンク", url: "/links" },
+];
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -29,10 +35,16 @@ export default function RootLayout({
       >
         <div className="min-h-screen flex flex-col">
           <header className="px-6 py-4 border-b border-black/10">
-            <nav>
-              <Link href="/" className="text-sm font-medium">
-                vuch.vu
-              </Link>
+            <nav aria-label="sections">
+              <ul className="flex justify-center gap-4 text-sm">
+                {sections.map((section) => (
+                  <li key={section.url}>
+                    <Link href={section.url} className="underline underline-offset-4">
+                      {section.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </nav>
           </header>
           <main className="flex-1">{children}</main>

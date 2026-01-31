@@ -33,7 +33,7 @@ export default function LinksPage() {
     { label: "X (旧Twitter)", url: "https://x.com/x_vuchvu_x" },
     { label: "Misskey", url: "https://misskey.dev/@x_vuchvu_x" },
     { label: "Discord", url: "https://discord.com/users/258213639486439425" },
-    { label: "Bluesky", url: "https://bsky.social/vuchvu.bsky.social" },
+    { label: "Bluesky", url: "https://bsky.app/profile/vuchvu.bsky.social" },
   ];
   const creatorLinks: Link[] = [
     { label: "BOOTH", url: "https://vuchvu.booth.pm/" },

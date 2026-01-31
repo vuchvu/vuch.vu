@@ -1,12 +1,17 @@
-import Link from "next/link";
-
+import Image from "next/image";
 
 export default function HomePage() {
   return (
     <main className="p-8 max-w-xl mx-auto space-y-8">
       <div className="space-y-4 text-center">
         <h1 className="text-4xl font-bold">ヴヂュヴのホームページ</h1>
-        <img src="/avatar.png" alt="Profile" className="w-48 h-48 mx-auto" />
+        <Image
+          src="/avatar.png"
+          alt="Profile"
+          width={192}
+          height={192}
+          className="w-48 h-48 mx-auto"
+        />
       </div>
 
       <section id="about" className="space-y-3">

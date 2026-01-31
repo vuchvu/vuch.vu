@@ -4,6 +4,15 @@ on:
   push:
     branches:
       - main
+    paths:
+      - app/**
+      - public/**
+      - next.config.ts
+      - package.json
+      - package-lock.json
+      - tsconfig.json
+      - tailwind.config.js
+      - postcss.config.mjs
 
 jobs:
   deploy:

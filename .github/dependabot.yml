@@ -7,8 +7,12 @@ updates:
       day: "monday"
       time: "03:00"
     open-pull-requests-limit: 10
+    commit-messages:
+      prefix: "deps"
     labels:
       - "dependencies"
+    ignore:
+      - dependency-type: "development"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -16,5 +20,7 @@ updates:
       day: "monday"
       time: "03:00"
     open-pull-requests-limit: 10
+    commit-messages:
+      prefix: "ci"
     labels:
       - "dependencies"

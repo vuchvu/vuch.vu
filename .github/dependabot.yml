@@ -9,7 +9,6 @@ updates:
     open-pull-requests-limit: 10
     labels:
       - "dependencies"
-    open-pull-requests-for-security-updates-only: true
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -19,4 +18,3 @@ updates:
     open-pull-requests-limit: 10
     labels:
       - "dependencies"
-    open-pull-requests-for-security-updates-only: true

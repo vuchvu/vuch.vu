@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function HomePage() {
   return (
-    <main className="p-8 max-w-xl mx-auto space-y-8">
+    <main className="mx-auto max-w-xl space-y-8 p-8">
       <div className="space-y-4 text-center">
         <h1 className="text-4xl font-bold">ヴヂュヴのホームページ</h1>
         <Image
@@ -10,13 +10,13 @@ export default function HomePage() {
           alt="Profile"
           width={192}
           height={192}
-          className="w-48 h-48 mx-auto"
+          className="mx-auto h-48 w-48"
         />
       </div>
 
       <section id="about" className="space-y-3">
-        <h2 className="text-xl font-semibold text-center">自己紹介</h2>
-        <p className="text-sm text-center">
+        <h2 className="text-center text-xl font-semibold">自己紹介</h2>
+        <p className="text-center text-sm">
           制作物や活動のまとめ、連絡先などをこのサイトに整理しています。
         </p>
       </section>

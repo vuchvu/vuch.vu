@@ -9,13 +9,13 @@ type DisplayLinkProps = {
 function DisplayLinks({ header, links, styles }: DisplayLinkProps) {
   return (
     <>
-      <h2 className="text-2xl mt-4 mb-2 text-center">{header}</h2>
+      <h2 className="mt-4 mb-2 text-center text-2xl">{header}</h2>
       <ul className="space-y-4">
         {links.map((link) => (
           <li key={link.url}>
             <a
               href={link.url}
-              className={`block max-w-xs mx-auto p-4 text-center rounded-lg ${styles} transition`}
+              className={`mx-auto block max-w-xs rounded-lg p-4 text-center ${styles} transition`}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -47,11 +47,15 @@ export default function LinksPage() {
   const buttonStyles = "bg-sky-400 hover:bg-sky-300 text-white";
 
   return (
-    <main className="p-8 max-w-xl mx-auto">
-      <h1 className="text-4xl font-bold mb-6 text-center">リンク</h1>
+    <main className="mx-auto max-w-xl p-8">
+      <h1 className="mb-6 text-center text-4xl font-bold">リンク</h1>
       <DisplayLinks header="SNS" links={snsLinks} styles={buttonStyles} />
       <DisplayLinks header="創作" links={creatorLinks} styles={buttonStyles} />
-      <DisplayLinks header="開発" links={developerLinks} styles={buttonStyles} />
+      <DisplayLinks
+        header="開発"
+        links={developerLinks}
+        styles={buttonStyles}
+      />
     </main>
   );
 }

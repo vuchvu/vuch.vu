@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 
 const sections: NavLink[] = [
   { label: "自己紹介", url: "/" },
+  { label: "作品", url: "/works" },
   { label: "リンク", url: "/links" },
 ];
 

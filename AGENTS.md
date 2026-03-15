@@ -1,14 +1,37 @@
-# Repository Rules
+# AGENTS.md
 
-- Write commit messages in Japanese
-- Branch names must start with "feat/" or "fix/"
-- Merge PRs into "develop"
+このプロジェクトでAIエージェントが作業する際のガイドラインです。
 
-# Issues Workflow
+## ブランチ戦略
 
-- Create a new branch from "develop" (prefix "feat/" or "fix/")
-- If an issue number is specified, fetch its details with the `gh` command
-- Edit the issue-related changes and commit them
-- Create a PR and include "Fixes #N" in the PR body
-- Merge the PR into "develop"
-- Merge "develop" into "main" manually at a convenient time
+```
+feat/xxx → develop → main
+fix/xxx  → develop → main
+```
+
+- 機能追加は `feat/xxx`、バグ修正は `fix/xxx` ブランチで作業し、`develop` へPRを出す
+- `develop` → `main` へのマージでリリースが行われる
+
+## コミットメッセージ
+
+[Conventional Commits](https://www.conventionalcommits.org/) に従い、日本語で記述する。
+
+```
+feat: 新機能の説明
+fix: バグ修正の説明
+docs: ドキュメントの説明
+ci: CI/CD の変更
+refactor: リファクタリング
+chore: その他の変更
+```
+
+git-cliff がコミットメッセージを元にリリースノートを自動生成する。
+
+## Issuesワークフロー
+
+- `develop` から新しいブランチを作成する
+- Issue番号が指定されている場合は `gh` コマンドで詳細を取得する
+- Issue関連の変更を編集してコミットする
+- PRを `develop` にマージする
+- PRを作成し、PR本文に "Fixes #N" を含める
+- 適切なタイミングで `develop` を `main` に手動マージする

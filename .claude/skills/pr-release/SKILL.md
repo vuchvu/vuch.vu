@@ -1,6 +1,6 @@
 ---
 name: pr-release
-description: 「本リリース」と言われたら使うスキル。developブランチからmainブランチへのPRを作成する（マージはしない）。仮リリース済みのPR一覧を自動収集して説明文を生成する。GitHub CLI (gh) を使用。
+description: 「本リリース」と言われたら使うスキル。developブランチからmainブランチへのPRを作成する。
 ---
 
 # PR Release Skill
@@ -66,9 +66,4 @@ gh pr view --json url -q .url
 
 マージはしない。URLをユーザーに伝えて完了。
 
----
-
-## 注意事項
-
-- `jq` が未インストールの場合は `gh pr list` の出力を別の方法でパースする
-- リポジトリ名は `gh repo view --json nameWithOwner` で取得可能
+トラブル発生時は `references/troubleshooting.md` を参照。

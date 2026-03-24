@@ -1,11 +1,11 @@
 ---
 name: pr-staging
-description: 「仮リリース」と言われたら使うスキル。現在のfeatureブランチからdevelopブランチへのPRを作成・squash mergeする。GitHub CLI (gh) を使用。
+description: 「仮リリース」と言われたら使うスキル。featureブランチからdevelopブランチへのPRを作成・squash mergeする。
 ---
 
 # PR Staging Skill
 
-featureブランチ → developブランチへのPR作成＆squash mergeを行う。
+(feat or fixブランチでなければ作成 →) feat or fixブランチ → developブランチへのPR作成＆squash mergeを行う。
 
 ---
 
@@ -33,22 +33,10 @@ test -f cliff.toml && echo "cliff.toml found"
 git log origin/develop..HEAD --oneline
 ```
 
-形式の目安：
-
-| prefix      | 用途             |
-| ----------- | ---------------- |
-| `feat:`     | 新機能           |
-| `fix:`      | バグ修正         |
-| `docs:`     | ドキュメント     |
-| `refactor:` | リファクタリング |
-| `chore:`    | その他の変更     |
-
-スコープがある場合は `feat(scope): message` の形式。
+conventional commitsの形式については `references/conventional-commits.md` を参照。
 形式が不正なコミットがあれば `git commit --amend` や `git rebase -i` での修正を促す。（強制はしない）
 
-### Step 3: PRテンプレートをユーザーに提示
-
-以下をそのまま表示し、ユーザーに埋めてもらう：
+### Step 3: PRテンプレートからPR情報を生成
 
 ```
 タイトル:
@@ -70,8 +58,8 @@ git log origin/develop..HEAD --oneline
 
 ```bash
 CURRENT_BRANCH=$(git branch --show-current)
-TITLE="<ユーザー入力>"
-BODY="<ユーザー入力>"
+TITLE="<タイトル>"
+BODY="<本文>"
 
 gh pr create \
   --base develop \
@@ -89,3 +77,5 @@ gh pr view --json url -q .url
 ```bash
 gh pr merge --squash --delete-branch
 ```
+
+トラブル発生時は `references/troubleshooting.md` を参照。

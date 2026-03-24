@@ -1,4 +1,5 @@
 # Changes here will be overwritten by Copier; do NOT edit
-_commit: v0.1.0-3-gf324913
+_commit: d4aceea
 _src_path: gh:vuchvu/repository-template
 project_name: ''
+project_specific_agents: ''

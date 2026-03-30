@@ -17,7 +17,11 @@ export class VuchVuStack extends cdk.Stack {
 
     const certificate = createCertificate(this, DOMAIN, hostedZone);
 
-    const distribution = createDistribution(this, { domain: DOMAIN, bucket, certificate });
+    const distribution = createDistribution(this, {
+      domain: DOMAIN,
+      bucket,
+      certificate,
+    });
 
     createDnsRecords(this, { domain: DOMAIN, hostedZone, distribution });
 

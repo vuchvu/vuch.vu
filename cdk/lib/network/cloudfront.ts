@@ -24,7 +24,7 @@ export function createDistribution(
       compress: true,
       cachePolicy: cloudfront.CachePolicy.CACHING_OPTIMIZED,
     },
-    domainNames: [domain, ],
+    domainNames: [domain],
     certificate,
     defaultRootObject: "index.html",
     errorResponses: [

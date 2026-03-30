@@ -1,0 +1,31 @@
+{
+  "name": "vuch-vu-cdk",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "bootstrap": "node --env-file=.env node_modules/.bin/cdk bootstrap",
+    "deploy": "node --env-file=.env node_modules/.bin/cdk deploy",
+    "diff": "node --env-file=.env node_modules/.bin/cdk diff",
+    "lint": "eslint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9",
+    "@types/node": "^20",
+    "aws-cdk": "^2",
+    "eslint": "^9",
+    "prettier": "^3",
+    "ts-node": "^10",
+    "typescript": "~5",
+    "typescript-eslint": "^8"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2",
+    "constructs": "^10",
+    "dotenv": "^17.3.1",
+    "source-map-support": "^0.5"
+  }
+}

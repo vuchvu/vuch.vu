@@ -9,6 +9,10 @@ updates:
     open-pull-requests-limit: 10
     labels:
       - "dependencies"
+    ignore:
+      - dependency-name: "eslint"
+      - dependency-name: "eslint-*"
+      - dependency-name: "@eslint/*"
 
   - package-ecosystem: "github-actions"
     target-branch: "develop"

@@ -9,7 +9,7 @@ on:
       - public/**
       - next.config.ts
       - package.json
-      - package-lock.json
+      - pnpm-lock.yaml
       - tsconfig.json
       - tailwind.config.js
       - postcss.config.mjs
@@ -20,30 +20,19 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
-      - name: Cache node_modules
-        uses: actions/cache@v5
-        with:
-          path: node_modules
-          key: node-modules-${{ hashFiles('package-lock.json') }}
-
-      - name: Cache Next.js build
-        uses: actions/cache@v5
-        with:
-          path: .next/cache
-          key: nextjs-${{ hashFiles('package-lock.json') }}-${{ hashFiles('app/**', 'public/**', 'next.config.ts') }}
-          restore-keys: |
-            nextjs-${{ hashFiles('package-lock.json') }}-
+      - name: Setup pnpm
+        uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
 
       - name: Install dependencies
-        run: npm install
+        run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: npm run build
+        run: pnpm run build
 
       - name: Deploy to S3
-        uses: jakejarvis/s3-sync-action@master
+        uses: jakejarvis/s3-sync-action@be0c4ab89158cac4278689ebedd8407dd5f35a83 # v0.5.1
         with:
           args: --delete --exclude "*.map"
         env:

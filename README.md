@@ -7,7 +7,7 @@
 ローカルで動作確認する場合は以下を実行してください。
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 ブラウザで http://localhost:3000 を開くと確認できます。

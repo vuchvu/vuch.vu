@@ -9,7 +9,7 @@ on:
       - public/**
       - next.config.ts
       - package.json
-      - package-lock.json
+      - pnpm-lock.yaml
       - tsconfig.json
       - tailwind.config.js
       - postcss.config.mjs
@@ -22,11 +22,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
+
       - name: Install dependencies
-        run: npm install
+        run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: npm run build
+        run: pnpm run build
 
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@be0c4ab89158cac4278689ebedd8407dd5f35a83 # v0.5.1

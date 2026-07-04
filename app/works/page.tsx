@@ -13,7 +13,7 @@ const works: Work[] = [
     description:
       "QRコード画像からPDFラベルを生成するユーティリティ。GUI・CLI両対応。",
     url: "https://github.com/vuchvu/qr-print-helper",
-    icon: "qr-print-helper.png",
+    icon: "/qr-print-helper.png",
   },
   {
     title: "Trickcal Spinner Verbs",

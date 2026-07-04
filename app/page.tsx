@@ -10,6 +10,7 @@ export default function HomePage() {
           alt="Profile"
           width={192}
           height={192}
+          priority
           className="mx-auto h-48 w-48"
         />
       </div>

@@ -1,4 +1,5 @@
-import type { Link } from "../lib/types";
+import { Section } from "@/app/components/Section";
+import type { Link } from "@/app/lib/types";
 
 type DisplayLinkProps = {
   header: string;
@@ -8,8 +9,7 @@ type DisplayLinkProps = {
 
 function DisplayLinks({ header, links, styles }: DisplayLinkProps) {
   return (
-    <>
-      <h2 className="mt-4 mb-2 text-center text-2xl">{header}</h2>
+    <Section title={header} headingClassName="mt-4 mb-2 text-center">
       <ul className="space-y-4">
         {links.map((link) => (
           <li key={link.url}>
@@ -24,7 +24,7 @@ function DisplayLinks({ header, links, styles }: DisplayLinkProps) {
           </li>
         ))}
       </ul>
-    </>
+    </Section>
   );
 }
 
@@ -47,7 +47,7 @@ export default function LinksPage() {
   const buttonStyles = "bg-sky-400 hover:bg-sky-300 text-white";
 
   return (
-    <main className="mx-auto max-w-xl p-8">
+    <div className="mx-auto max-w-xl p-8">
       <h1 className="mb-6 text-center text-4xl font-bold">リンク</h1>
       <DisplayLinks header="SNS" links={snsLinks} styles={buttonStyles} />
       <DisplayLinks header="創作" links={creatorLinks} styles={buttonStyles} />
@@ -56,6 +56,6 @@ export default function LinksPage() {
         links={developerLinks}
         styles={buttonStyles}
       />
-    </main>
+    </div>
   );
 }

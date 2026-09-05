@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
-import type { Link as NavLink } from "./lib/types";
+import type { Link as NavLink } from "@/app/lib/types";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,8 +14,51 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://vuch.vu";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "ヴヂュヴのホームページ",
+  description: "ヴヂュヴのポートフォリオサイトです。",
+  openGraph: {
+    title: "ヴヂュヴのホームページ",
+    description: "ヴヂュヴのポートフォリオサイトです。",
+    url: siteUrl,
+    siteName: "vuch.vu",
+    images: [
+      {
+        url: `${siteUrl}/ogp.png`,
+        width: 1200,
+        height: 630,
+      },
+      {
+        url: `${siteUrl}/ogp_square.png`,
+        width: 1200,
+        height: 1200,
+      },
+    ],
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ヴヂュヴのホームページ",
+    description: "ヴヂュヴのポートフォリオサイトです。",
+    images: [`${siteUrl}/ogp.png`],
+  },
+};
+
+// JSON-LD構造化データ
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "ヴヂュヴ",
+  url: siteUrl,
+  sameAs: [
+    "https://x.com/x_vuchvu_x",
+    "https://github.com/vuchvu",
+    "https://www.pixiv.net/users/6518175",
+  ],
 };
 
 const sections: NavLink[] = [
@@ -30,7 +73,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ja">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

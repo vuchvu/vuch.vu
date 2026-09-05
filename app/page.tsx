@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <main className="mx-auto max-w-xl space-y-8 p-8">
+    <div className="mx-auto max-w-xl space-y-8 p-8 text-sm">
       <div className="space-y-4 text-center">
         <h1 className="text-4xl font-bold">ヴヂュヴのホームページ</h1>
         <Image
@@ -40,6 +40,6 @@ export default function HomePage() {
       <Section title="連絡先">
         <p>vudjuvu@gmail.com</p>
       </Section>
-    </main>
+    </div>
   );
 }

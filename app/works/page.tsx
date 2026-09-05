@@ -30,7 +30,7 @@ const works: Work[] = [
 
 export default function WorksPage() {
   return (
-    <main className="mx-auto max-w-xl p-8">
+    <div className="mx-auto max-w-xl p-8">
       <h1 className="mb-6 text-center text-4xl font-bold">作品</h1>
       <ul className="space-y-6">
         {works.map((work) => (
@@ -62,6 +62,6 @@ export default function WorksPage() {
           </li>
         ))}
       </ul>
-    </main>
+    </div>
   );
 }

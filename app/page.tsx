@@ -1,4 +1,6 @@
+import { Section } from "@/app/components/Section";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HomePage() {
   return (
@@ -7,7 +9,7 @@ export default function HomePage() {
         <h1 className="text-4xl font-bold">ヴヂュヴのホームページ</h1>
         <Image
           src="/avatar.png"
-          alt="Profile"
+          alt="ヴヂュヴのアバター"
           width={192}
           height={192}
           priority
@@ -15,12 +17,29 @@ export default function HomePage() {
         />
       </div>
 
-      <section id="about" className="space-y-3">
-        <h2 className="text-center text-xl font-semibold">自己紹介</h2>
-        <p className="text-center text-sm">
-          制作物や活動のまとめ、連絡先などをこのサイトに整理しています。
-        </p>
-      </section>
+      <Section title="自己紹介">
+        <p>絵描き兼エンジニア。</p>
+      </Section>
+      <Section title="絵描きの部分について">
+        <ul>
+          <li>描いてます。</li>
+          <li>
+            <Link href="/links" className="underline underline-offset-4">
+              描いているものはこちらに載せています。
+            </Link>
+          </li>
+        </ul>
+      </Section>
+      <Section title="エンジニアの部分について">
+        <ul>
+          <li>フロントエンドもバックエンドもどっちもできます。</li>
+          <li>システム設計もできなくもない。</li>
+          <li>TypeScript, Pythonなどが書けます。</li>
+        </ul>
+      </Section>
+      <Section title="連絡先">
+        <p>vudjuvu@gmail.com</p>
+      </Section>
     </main>
   );
 }

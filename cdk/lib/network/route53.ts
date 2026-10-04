@@ -38,4 +38,11 @@ export function createDnsRecords(
     zone: hostedZone,
     target: cfTarget,
   });
+
+  // Discord のドメイン認証 (設定 → 接続 → ドメイン)
+  new route53.TxtRecord(scope, "DiscordVerificationRecord", {
+    zone: hostedZone,
+    recordName: "_discord",
+    values: ["dh=0177448d54128a6e34c515a42681d5d8d2e45329"],
+  });
 }

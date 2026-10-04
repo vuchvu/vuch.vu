@@ -43,6 +43,6 @@ export function createDnsRecords(
   new route53.TxtRecord(scope, "DiscordVerificationRecord", {
     zone: hostedZone,
     recordName: "_discord",
-    values: ["dh=0177448d54128a6e34c515a42681d5d8d2e45329"],
+    values: ["dh=cdc551352fd712f418b942027a0bfc773cc8819c"],
   });
 }

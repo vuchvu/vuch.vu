@@ -3,7 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@11.3.0",
+  "packageManager": "pnpm@12.18.0",
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "26.13.1",
+      "onFail": "download"
+    }
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -19,11 +26,11 @@
     "react-dom": "^19.3.0"
   },
   "overrides": {
-    "@humanfs/node": "^0.16.8",
+    "@humanfs/node": "^0.17.0",
     "brace-expansion": "^5.0.9",
     "browserslist": "^4.28.7",
-    "js-yaml": "^4.3.1",
-    "minimatch": "^10.2.1",
+    "js-yaml": "^5.0.0",
+    "minimatch": "^11.0.0",
     "postcss": "^8.5.23"
   },
   "devDependencies": {

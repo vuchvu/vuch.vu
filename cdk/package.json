@@ -2,12 +2,22 @@
   "name": "vuch-vu-cdk",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@12.18.0",
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "26.13.1",
+      "onFail": "download"
+    }
+  },
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "bootstrap": "node --env-file=.env node_modules/.bin/cdk bootstrap",
-    "deploy": "node --env-file=.env node_modules/.bin/cdk deploy",
-    "diff": "node --env-file=.env node_modules/.bin/cdk diff",
+    "bootstrap": "node --env-file=.env node_modules/aws-cdk/bin/cdk bootstrap",
+    "deploy": "node --env-file=.env node_modules/aws-cdk/bin/cdk deploy",
+    "diff": "node --env-file=.env node_modules/aws-cdk/bin/cdk diff",
+    "import": "node --env-file=.env node_modules/aws-cdk/bin/cdk import",
+    "aws": "set -a && . ./.env && set +a && uvx --from awscli aws",
     "lint": "eslint",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
@@ -19,13 +29,16 @@
     "eslint": "^9",
     "prettier": "^3",
     "ts-node": "^10",
-    "typescript": "~7.0.0",
-    "typescript-eslint": "^8"
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.2"
   },
   "dependencies": {
     "aws-cdk-lib": "^2",
     "constructs": "^10",
     "dotenv": "^18.0.0",
     "source-map-support": "^0.5"
+  },
+  "overrides": {
+    "minimatch": "^11.0.0"
   }
 }

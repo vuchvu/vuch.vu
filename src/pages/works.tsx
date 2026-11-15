@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 type Work = {
   title: string;
   description: string;
@@ -43,7 +41,7 @@ export default function WorksPage() {
             >
               <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-black/5 dark:bg-white/10">
                 {work.icon && (
-                  <Image
+                  <img
                     src={work.icon}
                     alt={work.title}
                     width={64}

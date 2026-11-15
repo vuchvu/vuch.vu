@@ -1,16 +1,20 @@
+import * as cdk from "aws-cdk-lib";
 import * as cloudfront from "aws-cdk-lib/aws-cloudfront";
 import * as route53 from "aws-cdk-lib/aws-route53";
 import * as targets from "aws-cdk-lib/aws-route53-targets";
 import { Construct } from "constructs";
 
-export function lookupHostedZone(
+// 既存のホストゾーンを cdk import で取り込んだもの。
+// スタック削除時にゾーンが消えるとネームサーバーが変わるため RETAIN にする
+export function createHostedZone(
   scope: Construct,
   domain: string,
-): route53.IHostedZone {
-  // 既存のホストゾーンを参照（管理対象外）
-  return route53.HostedZone.fromLookup(scope, "HostedZone", {
-    domainName: domain,
+): route53.PublicHostedZone {
+  const hostedZone = new route53.PublicHostedZone(scope, "HostedZone", {
+    zoneName: domain,
   });
+  hostedZone.applyRemovalPolicy(cdk.RemovalPolicy.RETAIN);
+  return hostedZone;
 }
 
 interface DnsRecordsProps {
@@ -19,12 +23,11 @@ interface DnsRecordsProps {
   distribution: cloudfront.Distribution;
 }
 
-// cdk import 時: スキップして cdk deploy で上書き可能
 export function createDnsRecords(
   scope: Construct,
   props: DnsRecordsProps,
 ): void {
-  const { domain, hostedZone, distribution } = props;
+  const { hostedZone, distribution } = props;
   const cfTarget = route53.RecordTarget.fromAlias(
     new targets.CloudFrontTarget(distribution),
   );

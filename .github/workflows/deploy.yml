@@ -5,25 +5,27 @@ on:
     branches:
       - main
     paths:
-      - app/**
+      - src/**
       - public/**
-      - next.config.ts
       - package.json
       - pnpm-lock.yaml
+      - react-router.config.ts
+      - vite.config.ts
       - tsconfig.json
-      - tailwind.config.js
-      - postcss.config.mjs
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: actions/checkout@v7.0.1
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+        uses: pnpm/action-setup@v6.1.1
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -31,13 +33,11 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      - name: Deploy to S3
-        uses: jakejarvis/s3-sync-action@be0c4ab89158cac4278689ebedd8407dd5f35a83 # v0.5.1
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v6.3.0
         with:
-          args: --delete --exclude "*.map"
-        env:
-          AWS_S3_BUCKET: ${{ secrets.S3_BUCKET_NAME }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          SOURCE_DIR: out
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Deploy to S3
+        run: aws s3 sync build/client "s3://${{ secrets.S3_BUCKET_NAME }}" --delete --exclude "*.map"

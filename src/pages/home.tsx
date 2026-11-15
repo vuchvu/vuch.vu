@@ -1,18 +1,16 @@
-import { Section } from "@/app/components/Section";
-import Image from "next/image";
-import Link from "next/link";
+import { Link } from "react-router";
+import { Section } from "@/components/Section";
 
-export default function HomePage() {
+export default function Home() {
   return (
     <div className="mx-auto max-w-xl space-y-8 p-8 text-sm">
       <div className="space-y-4 text-center">
         <h1 className="text-4xl font-bold">ヴヂュヴのホームページ</h1>
-        <Image
+        <img
           src="/avatar.png"
           alt="ヴヂュヴのアバター"
           width={192}
           height={192}
-          priority
           className="mx-auto h-48 w-48"
         />
       </div>
@@ -24,7 +22,7 @@ export default function HomePage() {
         <ul>
           <li>描いてます。</li>
           <li>
-            <Link href="/links" className="underline underline-offset-4">
+            <Link to="/links" className="underline underline-offset-4">
               描いているものはこちらに載せています。
             </Link>
           </li>

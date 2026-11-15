@@ -5,14 +5,13 @@ on:
     branches:
       - main
     paths:
-      - app/**
+      - src/**
       - public/**
-      - next.config.ts
       - package.json
       - pnpm-lock.yaml
+      - react-router.config.ts
+      - vite.config.ts
       - tsconfig.json
-      - tailwind.config.js
-      - postcss.config.mjs
 
 jobs:
   deploy:
@@ -40,4 +39,4 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
-          SOURCE_DIR: out
+          SOURCE_DIR: build/client

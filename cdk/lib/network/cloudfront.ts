@@ -18,7 +18,7 @@ export function createDistribution(
   const { domain, bucket, certificate } = props;
 
   // S3 REST API エンドポイントは拡張子なしパスを解決できないため、
-  // viewer-request で /works -> /works.html のように書き換える。
+  // viewer-request で /works -> /works/index.html のように書き換える。
   // URL は末尾スラッシュなしに統一し、/works/ は /works へリダイレクトする
   // (ルート / のみ defaultRootObject が処理)
   const rewriteIndexFunction = new cloudfront.Function(
@@ -38,7 +38,7 @@ function handler(event) {
     };
   }
   if (uri !== "/" && !uri.includes(".")) {
-    request.uri = uri + ".html";
+    request.uri = uri + "/index.html";
   }
   return request;
 }
@@ -66,12 +66,12 @@ function handler(event) {
       {
         httpStatus: 403,
         responseHttpStatus: 404,
-        responsePagePath: "/404.html",
+        responsePagePath: "/404/index.html",
       },
       {
         httpStatus: 404,
         responseHttpStatus: 404,
-        responsePagePath: "/404.html",
+        responsePagePath: "/404/index.html",
       },
     ],
     priceClass: cloudfront.PriceClass.PRICE_CLASS_ALL,

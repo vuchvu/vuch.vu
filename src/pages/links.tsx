@@ -1,5 +1,5 @@
-import { Section } from "@/app/components/Section";
-import type { Link } from "@/app/lib/types";
+import { Section } from "@/components/Section";
+import type { Link } from "@/lib/types";
 
 type DisplayLinkProps = {
   header: string;

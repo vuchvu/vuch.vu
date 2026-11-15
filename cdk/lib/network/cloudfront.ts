@@ -10,7 +10,6 @@ interface DistributionProps {
   certificate: acm.ICertificate;
 }
 
-// cdk import 時: ディストリビューション ID を指定
 export function createDistribution(
   scope: Construct,
   props: DistributionProps,

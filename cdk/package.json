@@ -17,7 +17,7 @@
     "deploy": "node --env-file=.env node_modules/aws-cdk/bin/cdk deploy",
     "diff": "node --env-file=.env node_modules/aws-cdk/bin/cdk diff",
     "import": "node --env-file=.env node_modules/aws-cdk/bin/cdk import",
-    "aws": "set -a && . ./.env && set +a && uvx --from awscli aws",
+    "aws": "set -a && . ./.env && set +a && aws",
     "lint": "eslint",
     "format": "prettier --write .",
     "format:check": "prettier --check ."

@@ -19,10 +19,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: actions/checkout@v7.0.1
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+        uses: pnpm/action-setup@v6.1.1
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -31,7 +31,7 @@ jobs:
         run: pnpm run build
 
       - name: Deploy to S3
-        uses: jakejarvis/s3-sync-action@be0c4ab89158cac4278689ebedd8407dd5f35a83 # v0.5.1
+        uses: jakejarvis/s3-sync-action@v0.5.1
         with:
           args: --delete --exclude "*.map"
         env:
